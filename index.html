@@ -9,13 +9,46 @@
 </head>
 
 <body>
+    <header>
     <div class="top">
-        <div class="scores">
-            <h3>View High Scores</h3>
+        <div>
+            <h3 class="scores">View High Scores</h3>
+            <h3 class="time">Time: <span id="countdown">0</span></h3>
         </div>
-        <div class="time"></div>
     </div>
-    <div class="main"></div>
+    </header>
+
+    <main>
+        <section>
+            <div class="main">
+                <div class="opening">
+                    <h1 id="title">Coding Quiz Challenge</h1>
+                    <p id="instructions">Try to answer the following code-related questions within the time limit.<br>Keep in mind that incorrect answers will be penelize your time by ten</br>by ten seconds!</p>
+                    <button id="start" >Start Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="quiz" style="display: none;">
+                <div class="questions">
+                    <h2 id="questionOne">This is my question</h2>
+                    <div id="answers">
+                        <button class="options">answer</button>
+                        <button class="options">answer</button>
+                        <button class="options">answer</button>
+                        <button class="options">answer</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer" style="display: none;">
+            <div id="wrong"><h4>WRONG ANSWER!</h4></div>
+            <div id="correct"><h4>CORRECT ANSWER!</h4></div>
+        </footer>
+    </main>
+
     <script src="assets/script.js"></script>
 </body>
 
