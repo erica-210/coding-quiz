@@ -12,20 +12,20 @@ var currentQuestionIndex = 0;
 var question;
 var timer;
 var timerCount;
-var score = 0;
+var score;
+var correct;
 
 // when start is clicked timer is activated
 
 function startGame() {
     currentQuestionIndex = 0;
-    timerCount = 75;
+    timerCount = 50;
     score = 0;
 
     displayQuestions();
     startTimer();
 }
 
-startButton.addEventListener("click", startGame);
 
 function startTimer() {
     timer = setInterval(function() {
@@ -35,49 +35,53 @@ function startTimer() {
         if (timerCount === 0) {
         clearInterval(timer);
         
-        if (timerCount >= 0) {
-        }
-
     }
     }, 1000);
 }
+
+
+startButton.addEventListener("click", startGame);
 
 // can keep quesetions and answers in array
 var questionPossability = [
     { question: "1",
       answers: [
-        {option: "1", isCorrect: false},
-        {option: "2", isCorrect: true},
-        {option: "3", isCorrect: false},
-        {option: "4", isCorrect: false},
+        {option: "1"},
+        {option: "2"},
+        {option: "3"},
+        {option: "4"},
       ]
+      correct: ""
     },
     {
         question: "2",
         answers: [
-          {option: "1", isCorrect: true},
-          {option: "2", isCorrect: false},
-          {option: "3", isCorrect: false},
-          {option: "4", isCorrect: false},
+          {option: "1"},
+          {option: "2"},
+          {option: "3"},
+          {option: "4"},
         ]
+        correct: ""
     },
     {
         question: "3",
         answers: [
-          {option: "1", isCorrect: false},
-          {option: "2", isCorrect: false},
-          {option: "3", isCorrect: false},
-          {option: "4", isCorrect: true},
+          {option: "1"},
+          {option: "2"},
+          {option: "3"},
+          {option: "4"},
         ]
+        correct: ""
     },
     {
         question: "4",
         answers: [
-          {option: "1", isCorrect: false},
-          {option: "2", isCorrect: false},
-          {option: "3", isCorrect: true},
-          {option: "4", isCorrect: false},
+          {option: "1"},
+          {option: "2"},
+          {option: "3"},
+          {option: "4"},
         ]
+        correct: ""
     },
     {
         question: "5",
@@ -87,6 +91,7 @@ var questionPossability = [
           {option: "3", isCorrect: false},
           {option: "4", isCorrect: false},
         ]
+        correct: ""
     },
 ]
 
@@ -94,33 +99,52 @@ var questionPossability = [
 // as soon as timer is activated first question pops up
 function displayQuestions() {
     var currentQuestion = questionPossability[currentQuestionIndex];
-    var questionNumber = currentQuestionIndex + 1;
-    questions.innerHTML = questionNumber + "." + currentQuestion.question;
+  
+if (currentQuestionIndex < questionPossability.length && timerCount > 0) {
+   document.querySelector(".main").style.display= 'none';
+   document.querySelector(".quiz").style.display= 'block';
 
-    currentQuestion.answers.forEach(answer => {
-        var button = document.createElement("button");
-        button.innerHTML = answers.option;
-        button.classList.add("optionButtons");
-        answerPosibilities.appendChild(button);
-    });
+   document.getElementById('questions').innerHTML =
+                <div class="questions">
+                    <h2 id="questionOne">${questionPossability[currentQuestionIndex].question}</h2>
+                    <div id="answers">
+                        <button class="options">${questionPossability[currentQuestionIndex].answers[0]}</button>
+                        <button class="options">${questionPossability[currentQuestionIndex].answers[1]}</button>
+                        <button class="options">${questionPossability[currentQuestionIndex].answers[2]}</button>
+                        <button class="options">${questionPossability[currentQuestionIndex].answers[3]}</button>
+                    </div>
+                </div>;
+     } else {
+        clearInterval(timer)
+        score = timerCount;
+        document.querySelector('#score').textContent = score;
+        document.querySelector('#mainDiv').style.display = 'none';
+        document.querySelector('#finalPage').style.display = 'block';
 
-
+     }
     // after question is answered, next question pops up
-    currentQuestionIndex++;
-}
-
-startGame();
-// when question answered correctly, store points and recieve correct answer notification
-function correctAnswer() {
-    //display correct answer footer
     
-  }
+}
 
+document.getElementById('questions').onclick = function(e) {
+    document.querySelector('.footer').style.display = block;
+    var answer = e.target.innerText;
+    console.log(answer);
+    if (answer === questionPossability[currentQuestionIndex].correct) {
+        document.querySelector('footer').innerHTML = 
+        <div id="correct"><h4>CORRECT ANSWER!</h4></div>; {
 
-// when question is answered incorrectly, time is subtracted from timer
-function wrongAnswer() {
+        } else {
+            document.querySelector('.footer').innerHTML = 
+            <div id="wrong"><h4>WRONG ANSWER!</h4></div>;
+            timerCount = timerCount - 10;
+        }
+    }
+    currentQuestionIndex++
 
 }
+// when question answered correctly, store points and recieve correct answer notification
+// when question is answered incorrectly, time is subtracted from timer
     // note at bottom of screen that answer is wrong
 // when all question is answered or time runs out, GAME OVER
 

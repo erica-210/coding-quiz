@@ -18,7 +18,7 @@
     </div>
     </header>
 
-    <main>
+    <main id="mainDiv">
         <section>
             <div class="main">
                 <div class="opening">
@@ -29,23 +29,32 @@
             </div>
         </section>
 
-        <section>
+        <section id="questions">
             <div class="quiz" style="display: none;">
                 <div class="questions">
-                    <h2 id="questionOne">This is my question</h2>
+                    <h2 id="questionOne"></h2>
                     <div id="answers">
-                        <button class="options">answer</button>
-                        <button class="options">answer</button>
-                        <button class="options">answer</button>
-                        <button class="options">answer</button>
+                        <button class="options"></button>
+                        <button class="options"></button>
+                        <button class="options"></button>
+                        <button class="options"></button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <div id="finalPage" style="display: none;">
+            <div>
+                <h3 id="score"></h3>
+                <label><h3>Input Initals Here</h3></label>
+                <input type="text" id="initials" placeholder="your initials here"><input/>
+                <button id="submit">Submit</button>
+            </div>
+        </div>
+
         <footer class="footer" style="display: none;">
-            <div id="wrong"><h4>WRONG ANSWER!</h4></div>
-            <div id="correct"><h4>CORRECT ANSWER!</h4></div>
+            <div id="wrong"><h4></h4></div>
+            <div id="correct"><h4></h4></div>
         </footer>
     </main>
 
