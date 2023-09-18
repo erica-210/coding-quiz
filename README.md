@@ -33,12 +33,13 @@ Pages used as refrences:
 
     JS timers: https://www.elated.com/javascript-timers-with-settimeout-and-setinterval/
 
+    Quiz questions: https://basescripts.com/110-javascript-quiz-questions-with-solutions-pdf-download-test-your-knowledge
 
 
 Tutoring:
 
     Jill Jiang
-    
+
 ## License
 
 N/A
